@@ -1,0 +1,63 @@
+body{
+	
+	background:  #ecf0f1
+;
+}
+
+.myContainer{
+	margin-top: 20px;
+}
+.myButton{
+	margin-bottom: 20px;
+}
+
+.navbar-dark .navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.myLink{
+	text-align:right; ;
+}
+
+.myA{
+	color:white;
+}
+
+.myA:hover{
+	color:white;
+}
+
+.myDrop{
+	
+	
+	margin: 8px 0 0 0;
+	text-align: center;
+	background-color: #007bff;
+	border: 1px solid #007bff;
+	border-radius: 0;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu-right {
+    right: -16px;
+    left: auto;
+}
+
+.myWeolcome{
+	width:45%;
+	margin:150px auto;
+	color:#007bff;
+}
+h1, .h1 {
+    font-size: 2.5rem;
+    font-size: 100px;
+}
+h2, .h2 {
+    font-size: 2rem;
+    font-size: 50px;
+    text-align: center;
+}
