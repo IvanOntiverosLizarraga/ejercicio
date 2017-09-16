@@ -104,11 +104,15 @@ class LibrosController extends Controller
         $this->validate($request, [
             'name' => 'required|regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ \t]*[0-9 \W]*$/i|min:10|max:50',
         ]);
+
         $libro = Libro::find($id);
-        $libro->fill($request->all());
+        $libro->name = $request->name;
+        $libro->autor_id = $request->autor_id;
+        $libro->categoria_id = $request->categoria_id;
         $libro->save();
         flash('El libro '.$libro->name.' ha sido editado de forma exitosa.')->warning();
         return redirect()->route('admin.libros.index');
+        
     }
 
     /**
