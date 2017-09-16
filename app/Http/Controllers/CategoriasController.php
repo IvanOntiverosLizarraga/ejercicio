@@ -81,6 +81,9 @@ class CategoriasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ \t]*$/i|min:10|max:50',
+        ]);
         $categoria = Categoria::find($id);
         $categoria->fill($request->all());
         $categoria->save();

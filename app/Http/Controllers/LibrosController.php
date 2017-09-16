@@ -101,6 +101,9 @@ class LibrosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ \t]*[0-9 \W]*$/i|min:10|max:50',
+        ]);
         $libro = Libro::find($id);
         $libro->fill($request->all());
         $libro->save();

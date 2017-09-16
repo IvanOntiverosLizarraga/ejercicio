@@ -40,14 +40,13 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ \t]*$/i|min:10|max:50',
             'email' => 'required|email',
-            'pass' => 'required|regex:/^[A-Za-z \t]*[0-9]*$/i|min:5|max:10|confirmed',
-        ]);
-        
-        $user = new User($request->all());
+            'password' => 'required|regex:/^[A-Za-z \t]*[0-9]*$/i|min:5|max:15|confirmed',
+        ]);        
+        $user = new User($request->all());        
         $user->password = bcrypt($request->password);
         $user->save();
         flash("Se ha registrado " . $user->name . " de forma exitosa.")->success();           
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index');      
         
     }
 
@@ -83,12 +82,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ \t]*$/i|min:10|max:50',
+            'email' => 'required|email',
+            'password' => 'required|regex:/^[A-Za-z \t]*[0-9]*$/i|min:5|max:15|confirmed',
+        ]);
         $user = User::find($id);
         $user->fill($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
         flash('El usuario '.$user->name.' ha sido actializado de forma exitosa.')->success();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index');        
     }
 
     /**

@@ -4,6 +4,18 @@
 
 @section('content')
 	<div class="container myContainer">
+   
+   @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+   
+
 		{!! Form::open(['route' => ['admin.users.update',$user->id], 'name' => 'form' , 'method' => 'PUT']) !!}
    			
    			<div class="form-group">
@@ -23,12 +35,12 @@
 
    			<div class="form-group">
    				{!! Form::label('password', 'Contraseña:') !!}
-   				{!! Form::password('password',['class' => 'form-control', 'name' => 'pass', 'placeholder' => '**************' ,'required']) !!}
+   				{!! Form::password('password',['class' => 'form-control', 'placeholder' => '**************' ,'required']) !!}
    			</div>
 
    			<div class="form-group">
-   				{!! Form::label('confirm', 'Confirmar contraseña:') !!}
-   				{!! Form::password('password',['class' => 'form-control', 'name' => 'confirm' ,'placeholder' => '**************' ,'required']) !!}
+   				{!! Form::label('password-confirm', 'Confirmar contraseña:') !!}
+   				{!! Form::password('password-confirm',['class' => 'form-control', 'name' => 'password_confirmation' ,'placeholder' => '**************' ,'required']) !!}
    			</div>
 
    			<div class="form-group">

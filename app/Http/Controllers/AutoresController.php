@@ -80,6 +80,9 @@ class AutoresController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ \t]*$/i|min:10|max:50',
+        ]);
         $autor = Autor::find($id);
         $autor->fill($request->all());
         $autor->save();
